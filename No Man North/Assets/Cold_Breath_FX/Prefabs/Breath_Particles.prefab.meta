@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: dcecb0ac6c9f48c4e912bfa9cda9e550
+labels:
+- Cold
+- Breath
+- Smoke
+- FX
+- ParticleEffect
+- Particles
+NativeFormatImporter:
+  userData: 

@@ -1,0 +1,35 @@
+Enviro 3.0.0
+
+----------------------------------------------------------------------------------
+v3.0.0			Initial release...
+----------------------------------------------------------------------------------
+v3.0.1
+
+* Added auto assignment of main camera. Leave camera field empty will show a CameraTag selection.
+* Fixed an issue and warning with compute buffer may not released correctly.
+* Fixed an issue where fog may not rendering correctly when volumetrics are deactivated.
+* Fixed some issue with gamma colorspace. (Linear colorspace recommended for realistic lighting!)
+* Fixed typo in Microsplat integration class name. It should show in components menu correctly now. (Thanks to erik!)
+* Some code restructuring for Enviro Manager. 
+----------------------------------------------------------------------------------
+v3.0.2
+
+* Fixed an issue in weather inspector when some modules not used.
+* Fixed errors when opening the Enviro prefab context from a non Enviro scene.
+* Fixed a possible error related to EnviroVolumetricFogLight.
+* Change in ChangeWeather functions to also change zone weather.
+----------------------------------------------------------------------------------
+v3.0.3
+ 
+* Added wind support. Please check the Environment module and clouds modules for settings.
+* Added support for "Audio Mixer Groups". You can assign a audio mixer group now for each sound effect in the audio module.
+* Added additional sky intensity curve in sky settings. Use this to change the intensity of sky based on sun position. 
+* Enviro will set the sky reflection intensity now based on the global reflection intensity in Built-in and URP and if Update Default Environment Reflections is activated.
+* Fixed an issue where Enviro Renderer component was added in URP / HDRP. This could lead to errors when opning prefabs in HDRP. Please remove the Enviro Renderer component from your main cameras!
+* Fixed an issue in Unity 2022 where clouds not rendering correctly in builds. (Camera Depth Texture Texel Size not auto set correctly in these cases)
+* Fixed some rendering issues with OpenGlCore. 
+* Fixed multiple issues in HDRP 12+.
+* Fixed error when opening the Envrio External Window in a non Enviro scene.
+
+
+ 
