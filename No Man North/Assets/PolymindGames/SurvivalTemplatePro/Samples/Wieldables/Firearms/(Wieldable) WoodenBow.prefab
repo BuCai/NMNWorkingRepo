@@ -2376,6 +2376,8 @@ MonoBehaviour:
     m_EventName: On Holster
     m_SetToExistingIfAvailable: 1
     m_DefaultName: On Holster
+  rightHandGrip: {fileID: 0}
+  leftHandGrip: {fileID: 0}
   m_CancelAimOnShoot: 1
   m_CanAimWhileReloading: 0
   m_CanAimWhileDry: 0

@@ -2,7 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Animations.Rigging;
 
 namespace MLC.NoManNorth.Eric
 {
@@ -18,6 +18,8 @@ namespace MLC.NoManNorth.Eric
         [SerializeField] private EventChannelFloat OnFrostPercentageChange;
 
         [SerializeField] private HitDetection MeleeHitDetection;
+        [SerializeField] private TwoBoneIKConstraint rightHandIK;
+        [SerializeField] private TwoBoneIKConstraint leftHandIK;
         #endregion
 
         #region Unity Methods
@@ -95,6 +97,31 @@ namespace MLC.NoManNorth.Eric
         public void MeleeAttackDeActivateHurtBoxes()
         {
             MeleeHitDetection.gameObject.SetActive(false);
+        }
+
+        public void EquipRifle()
+        {
+            playerAnimator.SetTrigger("EquipRifle");
+        }
+
+        public void SetRightHandIKTarget(Transform transform)
+        {
+            rightHandIK.data.target = transform;
+        }
+
+        public void SetLeftHandIKTarget(Transform transform)
+        {
+            leftHandIK.data.target = transform;
+        }
+        
+        public void UnEquipRifle()
+        {
+            playerAnimator.SetTrigger("UnequipRifle");
+        }
+
+        public void TriggerShot()
+        {
+            playerAnimator.SetTrigger("TriggerShot");
         }
 
         #endregion

@@ -62,7 +62,7 @@ namespace SurvivalTemplatePro.WieldableSystem
 
         public IWieldable SpawnWieldable(IWieldable wieldable)
         {
-            IWieldable spawnedWieldable = Instantiate(wieldable.gameObject, transform.position, transform.rotation, transform).GetComponent<IWieldable>();
+            IWieldable spawnedWieldable = Instantiate(wieldable.gameObject, transform).GetComponent<IWieldable>();
             spawnedWieldable.AudioPlayer = m_AudioPlayer;
             spawnedWieldable.RayGenerator = GetComponent<IRayGenerator>();
 

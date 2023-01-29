@@ -1,5 +1,6 @@
 using SurvivalTemplatePro.InventorySystem;
 using System.Collections.Generic;
+using MLC.NoManNorth.Eric;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -27,6 +28,10 @@ namespace SurvivalTemplatePro.WieldableSystem
         public event UnityAction<IFirearmRecoil> onRecoilChanged;
 
         public event UnityAction onUse;
+
+        [Title("IK grips")] 
+        [SerializeField] private Transform rightHandGrip;
+        [SerializeField] private Transform leftHandGrip;
 
         [Title("Aiming")]
 
@@ -104,6 +109,14 @@ namespace SurvivalTemplatePro.WieldableSystem
             }
         }
 
+        public override void OnEquip()
+        {
+            base.OnEquip();
+            PlayerAnimationHelper.Instance.EquipRifle();
+            PlayerAnimationHelper.Instance.SetRightHandIKTarget(rightHandGrip);
+            PlayerAnimationHelper.Instance.SetLeftHandIKTarget(leftHandGrip);
+        }
+
         protected override void DetachItem()
         {
             // Save the current 'ammo count in the magazine' to the item
@@ -126,6 +139,8 @@ namespace SurvivalTemplatePro.WieldableSystem
 
             // Cancel reload if active
             CancelReloading();
+            
+            PlayerAnimationHelper.Instance.UnEquipRifle();
         }
 
         public Ray GetShootRay(float spreadMod)
@@ -170,6 +185,7 @@ namespace SurvivalTemplatePro.WieldableSystem
 
                 float recoilValue = triggerValue * m_CurrentRecoil.RecoilForce;
                 m_CurrentShooter.Shoot(recoilValue);
+                PlayerAnimationHelper.Instance.TriggerShot();
 
                 onUse?.Invoke();
             }
